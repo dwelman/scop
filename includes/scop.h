@@ -28,18 +28,8 @@ typedef struct	s_env
 	float	*vertices;
 }				t_env;
 
-static float	angle = 30.0f;
-
-static float	cam_angle = 0.0f;
-
-void	handleKeypress(unsigned char key, int x, int y);
-
-void	handleResize(int w, int h);
-
-void	drawScene();
-
-void	update(int value);
-
 char	**readfile(int argc, char **argv);
+
+char	*read_shader(char *filename);
 
 #endif

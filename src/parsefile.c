@@ -12,7 +12,8 @@
 
 #include <scop.h>
 
-int		parsefile(char **file);
+int		parsefile(char **file)
 {
-	
+	(void)file;
+	return (1);
 }
