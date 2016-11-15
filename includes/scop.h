@@ -23,12 +23,35 @@
 
 # include <OpenGL/OpenGL.h>
 
-typedef struct	s_env
+typedef struct	s_obj
 {
+	int		vert_count;
+	int		face_count;
 	float	*vertices;
-}				t_env;
+	float	*normals;
+}				t_obj;
 
-char	**readfile(int argc, char **argv);
+typedef struct	s_file
+{
+	char	**contents;
+	size_t	size;
+}				t_file;
+
+static float	angle = 30.0f;
+
+static float	cam_angle = 0.0f;
+
+void	handleKeypress(unsigned char key, int x, int y);
+
+void	handleResize(int w, int h);
+
+void	drawScene();
+
+void	update(int value);
+
+t_file	readfile(int argc, char **argv);
+
+t_obj	parsefile(t_file file);
 
 char	*read_shader(char *filename);
 

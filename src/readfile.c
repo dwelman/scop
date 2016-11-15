@@ -34,40 +34,40 @@ void	error(void)
 	exit(errno);
 }
 
-char **file_get_contents(FILE *fd)
+t_file file_get_contents(FILE *fd)
 {
-	int		i;
+	t_file	file;
 	char	*buffer;
 	size_t	size;
-	char	**contents;
 	int		read;
 
-	i = 0;
+	file.size = 0;
 	size = BUFF_SIZE;
 	buffer = (char*)malloc(sizeof(char) * BUFF_SIZE);
-	contents = (char**)malloc(sizeof(char*) * file_count_lines(fd) + 1);
+	file.contents = (char**)malloc(sizeof(char*) * file_count_lines(fd) + 1);
 	while ((read = getline(&buffer, &size, fd)) > 0)
 	{
 		buffer[read - 1] = '\0';
 		if (read > 1 && buffer[0] != '#')
 		{
-			contents[i] = strdup(buffer);
-			if (contents[i] == NULL)
+			file.contents[file.size] = strdup(buffer);
+			if (file.contents[file.size] == NULL)
 				error();
-			printf("line %d\t:\t%s\n", i, contents[i]);
-			i++;		
+				if (file.contents[file.size][0] == 'v')
+			printf("line %lu\t:\t%s\n",file.size, file.contents[file.size]);
+			file.size++;		
 		}
 	}
 	free(buffer);
-	return (contents);
+	return (file);
 }
 
-char **readfile(int argc, char **argv)
+t_file readfile(int argc, char **argv)
 {
 	FILE*	fd;
-	char	**file;
+	t_file	file;
 
-	file = NULL;
+	file.size = 0;
 	if (argc == 2)
 	{
 		fd = fopen(argv[1], "r");
