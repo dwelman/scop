@@ -1,4 +1,4 @@
-NAME = mod1
+NAME = scop
 
 SRC_FILES = *.c
 
@@ -22,7 +22,7 @@ $(NAME):
 	@echo "PROJECT CREATED"
 
 clean:
-	@/bin/rm -f $(OBJ)
+	@/bin/rm -f src/*.o
 	@echo "OBJECTS CLEANED"
 
 fclean: clean
