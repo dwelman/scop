@@ -13,6 +13,12 @@
 #ifndef SCOP_H
 # define SCOP_H
 
+#define GLFW_DLL
+#include <GLFW/glfw3.h>
+#define GLFW_DLL
+#include <GLFW/glfw3.h>
+
+
 # ifdef __APPLE__
 #  include <OpenGL/OpenGL.h>
 #  include <GLUT/glut.h>
@@ -23,7 +29,7 @@
 //# include "glext.h"
 # include <libc.h>
 
-/*
+
 static float	angle = 30.0f;
 
 static float	cam_angle = 0.0f;
@@ -35,6 +41,6 @@ void	handleResize(int w, int h);
 void	drawScene();
 
 void	update(int value);
-*/
+
 
 #endif
