@@ -6,11 +6,11 @@ SRC = $(addprefix src/, $(SRC_FILES))
 
 OBJ = $(SRC:.cpp=.o)
 
-FRAMEWORK = -framework GLUT -framework OpenGL -framework Cocoa
+FRAMEWORK = -framework GLUT -framework OpenGL -framework Cocoa -LGLFW -lglfw3 -L GLEW -lGLEW -framework IOKit -framework CoreVideo
 
 CFLAG = -Wall -Werror -Wextra
 
-INCLUDES = -I includes/
+INCLUDES = -I includes/ -I .
 
 all: $(NAME)
 

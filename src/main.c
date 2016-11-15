@@ -1,56 +1,46 @@
 #include <scop.h>
 
-//Initializes 3D rendering
-void initRendering()
+init
+
+int main()
 {
-	//Makes 3D drawing work when something is in front of something else
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_COLOR_MATERIAL);
-	glClearColor(0.7f, .9f, 1.0f, 1.0f);
-}
+    if (!glfwInit())
+    {
+        fprintf(stderr , "ERROR: could not start GLFW3\n");
+        return (-1);
+    }
+    // uncomment these lines if on Apple OS X
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-int main(int argc, char** argv)
-{
-	/*vertices.push_back(-1.0f);
-	vertices.push_back(1.0f);
-	vertices.push_back(-5.0f);
+  GLFWwindow* window = glfwCreateWindow(640, 480, "Hello Triangle", NULL, NULL);
+  if (!window) 
+  {
+    fprintf(stderr, "ERROR: could not open window with GLFW3\n");
+    glfwTerminate();
+    return 1;
+  }
+  glfwMakeContextCurrent(window);
+                                  
+  // start GLEW extension handler
+  glewExperimental = GL_TRUE;
+  glewInit();
 
-	vertices.push_back(-1.0f);
-	vertices.push_back(-1.0f);
-	vertices.push_back(-5.0f);
+  // get version info
+  const GLubyte* renderer = glGetString(GL_RENDERER); // get renderer string
+  const GLubyte* version = glGetString(GL_VERSION); // version as a string
+  printf("Renderer: %s\n", renderer);
+  printf("OpenGL version supported %s\n", version);
 
-	vertices.push_back(1.0f);
-	vertices.push_back(1.0f);
-	vertices.push_back(-5.0f);
+  // tell GL to only draw onto a pixel if the shape is closer to the viewer
+  glEnable(GL_DEPTH_TEST); // enable depth-testing
+  glDepthFunc(GL_LESS); // depth-testing interprets a smaller value as "closer"
 
-	vertices.push_back(1.0f);
-	vertices.push_back(1.0f);
-	vertices.push_back(-5.0f);
-
-	vertices.push_back(-1.0f);
-	vertices.push_back(-1.0f);
-	vertices.push_back(-5.0f);
-
-	vertices.push_back(1.0f);
-	vertices.push_back(-1.0f);
-	vertices.push_back(-5.0f);
-
-	//Initialize GLUT
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(400, 400); //Set the window size
-	
-	//Create the window
-	glutCreateWindow("Basic Shapes - videotutorialsrock.com");
-	initRendering(); //Initialize rendering
-	
-	//Set handler functions for drawing, keypresses, and window resizes
-	glutDisplayFunc(drawScene);
-	glutKeyboardFunc(handleKeypress);
-	glutReshapeFunc(handleResize);
-	
-	glutTimerFunc(25, update, 0);
-	glutMainLoop(); //Start the main loop.  glutMainLoop doesn't return.
-	return 0; //This line is never reached*/
-	return (0);
+  /* OTHER STUFF GOES HERE NEXT */
+  
+  // close GL context and any other GLFW resources
+  glfwTerminate();
+  return (0);
 }

@@ -13,22 +13,14 @@
 #ifndef SCOP_H
 # define SCOP_H
 
-#define GLFW_DLL
-#include <GLFW/glfw3.h>
-#define GLFW_DLL
-#include <GLFW/glfw3.h>
-
-
-# ifdef __APPLE__
-#  include <OpenGL/OpenGL.h>
-#  include <GLUT/glut.h>
-# else
-#  include <GL/glut.h>
-# endif
-
-//# include "glext.h"
 # include <libc.h>
+# include <stdio.h>
+# include <GL/glew.h>
 
+# define GLFW_DLL
+# include <GLFW/glfw3.h>
+
+# include <OpenGL/OpenGL.h>
 
 static float	angle = 30.0f;
 
