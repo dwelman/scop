@@ -1,10 +1,8 @@
 #include <scop.h>
 
-init
-
 int main()
 {
-    if (!glfwInit())
+    if (!glfwInit()) 
     {
         fprintf(stderr , "ERROR: could not start GLFW3\n");
         return (-1);
@@ -19,8 +17,8 @@ int main()
   if (!window) 
   {
     fprintf(stderr, "ERROR: could not open window with GLFW3\n");
-    glfwTerminate();
-    return 1;
+     glfwTerminate();
+    return (1);
   }
   glfwMakeContextCurrent(window);
                                   
